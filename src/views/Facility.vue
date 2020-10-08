@@ -58,9 +58,9 @@
           </v-col>
           <v-col cols="12" md="4">
             <v-card class="pa-4">
-              <v-btn class="mx-2" fab depressed dark color="red">
+              <v-btn class="mx-2" fab depressed dark color="red" to="/equipment">
                 <v-icon dark> mdi-all-inclusive </v-icon>
-              </v-btn>
+              </v-btn >
               <span class="text-h5 font-weight-light">7453 Equipments</span>
             </v-card>
           </v-col>

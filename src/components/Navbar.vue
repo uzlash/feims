@@ -7,52 +7,46 @@
       width="256"
     >
       <v-list dense>
-        <!-- <v-list-item
-          color="light-blue"
-          v-for="(child, i) in items"
-          :key="i"
-          link
-          :to="child.route"
-        >
-          <v-list-item-action v-if="child.icon">
-            <v-icon>{{ child.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ child.text }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item> -->
         <v-list-item color="light-blue" link to="/">
           <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Home</v-list-item-title>
+          <v-list-item-title>Dashboard</v-list-item-title>
         </v-list-item>
-                <v-list-item color="light-blue" link to="/site">
-          <v-list-item-icon>
-            <v-icon>mdi-office-building</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Site</v-list-item-title>
-        </v-list-item>
-        <!-- <v-list-group prepend-icon="mdi-office-building">
-          <template v-slot:activator>
-            <v-list-item-title>Site</v-list-item-title>
-          </template> -->
-          <!-- <v-list-group :value="true" no-action sub-group>
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>Kasu 1</v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item v-for="i in Faculties" :key="i" link>
-              <v-list-item-title v-text="i"></v-list-item-title> -->
-              <!-- <v-list-item-icon>
-                <v-icon>mdi-office-building</v-icon>
-              </v-list-item-icon> -->
-            <!-- </v-list-item>
-          </v-list-group>
-        </v-list-group> -->
+        <v-form>
+          <v-row justify="center">
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="sites"
+                solo
+                filled
+                label="Site"
+              ></v-select>
+            </v-col>
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="sections"
+                solo
+                filled
+                label="Faculty/Section"
+              ></v-select>
+            </v-col>
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="departments"
+                solo
+                filled
+                label="Department"
+              ></v-select>
+            </v-col>
+          </v-row>
+        </v-form>
         <v-list-item color="light-blue" link to="/report">
           <v-list-item-icon>
             <v-icon>mdi-chart-bar</v-icon>
@@ -138,11 +132,12 @@ export default {
   data: () => ({
     dialog: false,
     drawer: null,
+    sites: ["ABU", "ATBU", "BUK"],
+    sections: ["FE", "FM", "FS"],
+    departments: ["DOM", "DOB", "DOP"],
     items: [
       { icon: "mdi-home", text: "Home", route: "/" },
       { icon: "mdi-office-building", text: "Sites", route: "/site" },
-      // { icon: "mdi-warehouse", text: "Buildings", route: "/building" },
-      // { icon: "mdi-all-inclusive", text: "Equipments", route: "equipment" },
       { icon: "mdi-chart-bar", text: "Reports", route: "report" },
       { icon: "mdi-cog", text: "Settings", route: "setting" },
     ],

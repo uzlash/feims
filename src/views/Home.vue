@@ -36,7 +36,7 @@
             </v-card>
           </v-col>
         </v-row>
-        <!-- <v-row>
+        <v-row>
           <v-col cols="12" md="3" v-for="item in Statistics" :key="item.title">
             <v-card class="pa-4 d-flex flex-column align-center">
               <v-btn class="mx-2" fab small depressed dark color="light-blue">
@@ -46,7 +46,7 @@
               <div class="body-1">{{ item.title }}</div>
             </v-card>
           </v-col>
-        </v-row> -->
+        </v-row>
         <v-row>
           <v-col cols="6">
             <v-card height="400" class="custom__card--scrollable">

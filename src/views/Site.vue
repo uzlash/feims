@@ -1,91 +1,21 @@
 <template>
   <v-app class="grey lighten-4">
     <v-container>
-      <h2>Please Select site/section/department from the list below</h2>
-      <!-- <v-row>
-        <v-col cols="3" xs="12" md="3" sm="12" v-for="site in sites" :key="site.name">
-          <v-card class="mx-auto" max-width="344">
-            <v-img :src="site.image" height="200px"></v-img>
-            <v-card-title class="font-weight-light text-h6"> {{ site.name }} </v-card-title>
-            <v-card-subtitle>
-              {{ site.location }}
-            </v-card-subtitle>
+      <span class="text-h5 font-weight-light">Buildings</span>
+      <v-row>
+        <v-col cols="3" v-for="(building, index) in buildings" :key="index">
+          <v-card>
+            <v-img :src="building.image" height="200px"></v-img>
+            <v-card-title v-text="building.code"></v-card-title>
+            <v-card-subtitle class="pb-1" v-text="building.name"></v-card-subtitle>
+            <v-card-subtitle class="py-1" v-text="building.condition"></v-card-subtitle>
+            <v-card-subtitle class="py-1" v-text="building.cost"></v-card-subtitle>
             <v-card-actions>
-              <v-btn color="light-blue" text> more </v-btn>
-              <v-spacer></v-spacer>
+              <v-btn color="light-blue" class="text-capitalize" outlined>
+                More Details
+              </v-btn>
             </v-card-actions>
           </v-card>
-        </v-col>
-      </v-row> -->
-      <!-- <v-row>
-        <v-col cols="5">
-          <v-treeview
-          :active.sync="active"
-          :items="items"
-          :load-children="fetchUsers"
-          :open.sync="open"
-          activatable
-          color="warning"
-          open-on-click
-          transition
-        >
-          <template v-slot:prepend="{ item }">
-            <v-icon v-if="!item.children">
-              mdi-account
-            </v-icon>
-          </template>
-        </v-treeview>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="7">
-          <v-scroll-y-transition mode="out-in">
-          <div
-            v-if="!selected"
-            class="title grey--text text--lighten-1 font-weight-light"
-            style="align-self: center;"
-          >
-            Select a Site
-          </div>
-          <v-card
-            v-else
-            :key="selected.id"
-            class="pt-6 mx-auto"
-            flat
-            max-width="400"
-          >
-          <v-card-text>
-            <h3 class="headline mb-2">
-                {{ selected.name }}
-              </h3>
-              <div class="blue--text mb-2">
-                {{ selected.email }}
-              </div>
-              <div class="blue--text subheading font-weight-bold">
-                {{ selected.username }}
-              </div>
-          </v-card-text>
-        </v-col>
-      </v-row> -->
-      <v-row>
-        <v-col cols="6">
-          <v-treeview
-            v-model="tree"
-            :open="open"
-            :items="items"
-            activatable
-            item-key="name"
-            open-on-click
-          >
-            <template>
-              <v-icon>
-                <!-- {{ open ? "mdi-folder-open" : "mdi-folder" }} -->
-                mdi-office-building
-              </v-icon>
-            </template>
-          </v-treeview>
-        </v-col>
-        <v-col cols="6">
-          
         </v-col>
       </v-row>
     </v-container>
@@ -96,112 +26,73 @@
 export default {
   components: {},
   data: () => ({
-    sites: [
+    buildings: [
       {
-        name: "Department of Mechanical Engineering",
-        location: "Kasu 1, Kaduna",
+        name: "Large Lecture Hall 1",
+        code: "LLH1",
+        condition: "Good Condition",
+        cost: "0",
         image:
-          "https://i1.wp.com/sapientvendors.com.ng/wp-content/uploads/2015/03/Millennium-Tower-abuja.jpg",
+          "https://i.pinimg.com/originals/2a/3a/bd/2a3abd8d48b87a3b0f79244d55f1b846.jpg",
       },
       {
-        name: "Department of Computer Engineering",
-        location: "Lagos, Nigeria",
+        name: "Large Lecture Hall 2",
+        code: "LLH2",
+        condition: "Obsolete",
+        cost: "300,000",
+        image: "https://miro.medium.com/max/7680/1*y-D2swPsSS7x32C946UScg.jpeg",
+      },
+      {
+        name: "Large Lecture Hall 3",
+        code: "LLH3",
+        condition: "Abandoned",
+        cost: "100,000,000",
         image:
-          "https://pix10.agoda.net/hotelImages/4846640/-1/3c2e806ade3148cc56af0859b103f51c.jpg?s=1200x800",
+          "https://i.pinimg.com/originals/fe/b3/26/feb326e253239065b3c96e6080e3b3c7.jpg",
       },
       {
-        name: "Department of Electrical Engineering",
-        location: "Niger, Nigeria",
+        name: "Practical Lab 1",
+        code: "PL1",
+        condition: "Repairable",
+        cost: "50,000",
         image:
-          "https://constructionreviewonline.com/wp-content/uploads/2014/08/River-Niger.jpg",
+          "https://media.istockphoto.com/photos/empty-science-lab-teaching-resource-picture-id1044228678?k=6&m=1044228678&s=612x612&w=0&h=NAFscW3TXlNcAxq6TUdXH3VY06idp-X1WNtGzxJnYQc=",
       },
       {
-        name: "Department of Civil Engineering",
-        location: "Lagos, Nigeria",
+        name: "Practical Lab 2",
+        code: "PL2",
+        condition: "Repairable",
+        cost: "70,000",
         image:
-          "https://guardian.ng/wp-content/uploads/2015/05/lagos-light-rail-640x360.jpg",
-      },
-    ],
-    open: ["public"],
-    files: {
-      html: "mdi-language-html5",
-      js: "mdi-nodejs",
-      json: "mdi-code-json",
-      md: "mdi-language-markdown",
-      pdf: "mdi-file-pdf",
-      png: "mdi-file-image",
-      txt: "mdi-file-document-outline",
-      xls: "mdi-file-excel",
-    },
-    tree: [],
-    items: [
-      {
-        name: "Kasu 1",
-        children: [
-          {
-            name: "Faculty Of Sciences",
-            children: [
-              {
-                name: "Department of Computer Science",
-              },
-              {
-                name: "Department of Mathematical Sciences",
-              },
-              {
-                name: "Department of Biological Sciences",
-              },
-            ],
-          },
-          {
-            name: "Faculty of Engineering",
-            children: [
-              {
-                name: "Department of Mechanical Engineering",
-              },
-              {
-                name: "Department of Electrical Engineering",
-              },
-              {
-                name: "Department of Computer Engineering",
-              },
-            ],
-          },
-        ],
+          "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/sc-LabMove-H.jpg?itok=ZrHXpwoh",
       },
       {
-        name: "Kasu 2",
-        children: [
-          {
-            name: "Faculty Of Sciences",
-            children: [
-              {
-                name: "Department of Computer Science",
-              },
-              {
-                name: "Department of Mathematical Sciences",
-              },
-              {
-                name: "Department of Biological Sciences",
-              },
-            ],
-          },
-          {
-            name: "Faculty of Engineering",
-            children: [
-              {
-                name: "Department of Mechanical Engineering",
-              },
-              {
-                name: "Department of Electrical Engineering",
-              },
-              {
-                name: "Department of Computer Engineering",
-              },
-            ],
-          },
-        ],
+        name: "Small Lecture Theatre 1",
+        code: "SML1",
+        condition: "Abandoned",
+        cost: "5,000,000",
+        image:
+          "https://www.evertaut.co.uk/wp-content/uploads/2019/06/Lecture-chairs-in-small-lecture-theatre.jpg",
+      },
+      {
+        name: "Department Auditorium",
+        code: "DA",
+        condition: "Good Condition",
+        cost: "0",
+        image:
+          "https://archello.s3.eu-central-1.amazonaws.com/images/2020/04/20/01-VGIK-UPA.1587376767.9312.jpg",
+      },
+      {
+        name: "Workshop 1",
+        code: "W1",
+        condition: "Abandoned",
+        cost: "2,500,000",
+        image:
+          "https://www.solent.ac.uk/image-library/facilities/marine-engineering-workshops-6.jpg",
       },
     ],
   }),
+  computed: {},
+  methods: {},
 };
 </script>

@@ -5,7 +5,7 @@
         <h1
           class="text-h5 font-weight-light text-uppercase grey--text text--darken-2"
         >
-          Facility
+          Dashboard
         </h1>
         <v-row>
           <v-col cols="12">
@@ -14,9 +14,6 @@
                 <v-col cols="8">
                   <v-card-title class="text-h2"> Keiko Corp </v-card-title>
                   <span></span>
-                  <!-- <v-card-text>
-                    Head Office: No 15 sule lamido road gwarimpa, abuja.
-                  </v-card-text> -->
                 </v-col>
                 <v-col cols="4">
                   <v-card-title class="text-h6 font-weight-light px-2">
@@ -40,33 +37,18 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12" md="4">
-            <v-card class="pa-4">
-              <v-btn class="mx-2" fab depressed dark color="light-blue">
-                <v-icon dark>mdi-office-building</v-icon>
+          <v-col cols="12" md="3" v-for="item in Statistics" :key="item.title">
+            <v-card class="pa-4 d-flex flex-column align-center">
+              <v-btn class="mx-2" fab small depressed dark color="light-blue">
+                <v-icon dark>{{ item.icon }}</v-icon>
               </v-btn>
-              <span class="text-h5 font-weight-light">75 Sites</span>
-            </v-card>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-card class="pa-4">
-              <v-btn class="mx-2" fab depressed dark color="orange">
-                <v-icon dark> mdi-warehouse </v-icon>
-              </v-btn>
-              <span class="text-h5 font-weight-light">1200 Buildings</span>
-            </v-card>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-card class="pa-4">
-              <v-btn class="mx-2" fab depressed dark color="red" to="/equipment">
-                <v-icon dark> mdi-all-inclusive </v-icon>
-              </v-btn >
-              <span class="text-h5 font-weight-light">7453 Equipments</span>
+              <div class="text-h6 font-weight-light">{{ item.number }}</div>
+              <div class="body-1">{{ item.title }}</div>
             </v-card>
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="4">
+          <v-col cols="6">
             <v-card height="400" class="custom__card--scrollable">
               <v-card-title class="font-weight-light"
                 >Top Priority Repairs</v-card-title
@@ -101,15 +83,49 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="8">
+          <v-col cols="6">
+            <v-card height="400" class="custom__card--scrollable">
+              <v-card-title class="font-weight-light"
+                >Updates History</v-card-title
+              >
+              <v-divider class="mx-4"></v-divider>
+              <v-card-text
+                class="pa-2"
+                v-for="repair in Repairs"
+                :key="repair.image"
+              >
+                <v-row>
+                  <v-col cols="2">
+                    <v-avatar size="40">
+                      <v-img :src="repair.image"></v-img>
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="5">
+                    <div>{{ repair.name }}</div>
+                    <span
+                      >Condition:
+                      <span class="red--text">{{
+                        repair.condition
+                      }}</span></span
+                    >
+                  </v-col>
+                  <v-col cols="5">
+                    <div>Cost of Repair</div>
+                    <span class="green--text">N {{ repair.cost }}</span>
+                  </v-col>
+                </v-row>
+                <v-divider class="mx-4"></v-divider>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
             <v-card>
               <v-card-title class="font-weight-light"
                 >Repairs Summary</v-card-title
               >
               <v-divider class="mx-4"></v-divider>
-              <!-- <v-card-text class="pa-2">
-                <v-row> </v-row>
-              </v-card-text> -->
               <GChart
                 type="ColumnChart"
                 :data="columnChartData"
@@ -130,6 +146,64 @@
 export default {
   components: {},
   data: () => ({
+    Statistics: [
+      {
+        icon: "mdi-office-building",
+        number: "1",
+        title: "Site",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "1200",
+        title: "Buildings",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "1756",
+        title: "High Value Equipments",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "5220",
+        title: "Low Value Equipments",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "13",
+        title: "Obsolete",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "25",
+        title: "Abandonded",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "55",
+        title: "Repairable",
+        route: "",
+        color: "",
+      },
+      {
+        icon: "mdi-warehouse",
+        number: "255",
+        title: "Good Condition",
+        route: "",
+        color: "",
+      },
+    ],
     Repairs: [
       {
         name: "Keiko building 19",

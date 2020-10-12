@@ -1,26 +1,63 @@
 <template>
   <nav>
     <v-navigation-drawer
+      app
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
-      app
+      width="256"
     >
       <v-list dense>
-        <v-list-item
-          color="light-blue"
-          v-for="(child, i) in items"
-          :key="i"
-          link
-          :to="child.route"
-        >
-          <v-list-item-action v-if="child.icon">
-            <v-icon>{{ child.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ child.text }}
-            </v-list-item-title>
-          </v-list-item-content>
+        <v-list-item color="light-blue" link to="/">
+          <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Dashboard</v-list-item-title>
+        </v-list-item>
+        <v-form>
+          <v-row justify="center">
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="sites"
+                solo
+                filled
+                label="Site"
+              ></v-select>
+            </v-col>
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="sections"
+                solo
+                filled
+                label="Faculty/Section"
+              ></v-select>
+            </v-col>
+            <v-col cols="10">
+              <v-select
+                hide-details
+                dense
+                :items="departments"
+                solo
+                filled
+                label="Department"
+              ></v-select>
+            </v-col>
+          </v-row>
+        </v-form>
+        <v-list-item color="light-blue" link to="/report">
+          <v-list-item-icon>
+            <v-icon>mdi-chart-bar</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Reports</v-list-item-title>
+        </v-list-item>
+        <v-list-item color="light-blue" link to="/setting">
+          <v-list-item-icon>
+            <v-icon>mdi-cog</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Settings</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -36,7 +73,7 @@
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
         <span class="hidden-sm-and-down font-weight-light">FEIMS</span>
       </v-toolbar-title>
-      <v-text-field
+      <!-- <v-text-field
         dense
         rounded
         flat
@@ -45,7 +82,7 @@
         prepend-inner-icon="mdi-magnify"
         label="Search"
         class="hidden-sm-and-down"
-      ></v-text-field>
+      ></v-text-field> -->
       <v-spacer></v-spacer>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
@@ -78,27 +115,14 @@
           </v-list>
         </v-card>
       </v-menu>
-      <v-menu offset-y open-on-hover>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon large v-on="on" v-bind="attrs">
-            <v-avatar size="32px" item>
-              <v-img
-                src="https://i.imgur.com/HBOQXZp.png"
-                alt="Profile Image"
-              ></v-img
-            ></v-avatar>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item to="/profile">
-            <v-list-item-title>Edit profile</v-list-item-title>
-          </v-list-item>
-         
-          <v-list-item to="/logout">
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <v-btn icon large to="/profile">
+        <v-avatar size="32px" item>
+          <v-img
+            src="https://i.imgur.com/HBOQXZp.png"
+            alt="Profile Image"
+          ></v-img
+        ></v-avatar>
+      </v-btn>
     </v-app-bar>
   </nav>
 </template>
@@ -108,136 +132,27 @@ export default {
   data: () => ({
     dialog: false,
     drawer: null,
+    sites: ["ABU", "ATBU", "BUK"],
+    sections: ["FE", "FM", "FS"],
+    departments: ["DOM", "DOB", "DOP"],
     items: [
-      { icon: "mdi-map-marker", text: "Facility", route: "/" },
+      { icon: "mdi-home", text: "Home", route: "/" },
       { icon: "mdi-office-building", text: "Sites", route: "/site" },
-      { icon: "mdi-warehouse", text: "Buildings", route: "/building" },
-      { icon: "mdi-all-inclusive", text: "Equipments", route: "equipment" },
       { icon: "mdi-chart-bar", text: "Reports", route: "report" },
       { icon: "mdi-cog", text: "Settings", route: "setting" },
     ],
     messages: [
-      {
-        title: "solo",
-        tile: "solo cooperation",
-        image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-        
-      },
-      {
-        title: "echo",
-        tile: "echo cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "flesh",
-        tile: "flesh cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "super",
-        tile: "super cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "element",
-        tile: "element cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "micro",
-        tile: "micro cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "survey",
-        tile: "survey cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "eagle",
-        tile: "eagle cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "north",
-        tile: "north cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "lavel",
-        tile: "lavel cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "fine",
-        tile: "fine cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "some",
-        tile: "some cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "blade",
-        tile: "blade cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "jordan",
-        tile: "jordan cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "lorem",
-        tile: "lorem cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "keiko",
-        tile: "keiko cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "swift",
-        tile: "swift cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "switch",
-        tile: "switch cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "net",
-        tile: "net cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
-      {
-        title: "Ash",
-        tile: "ash cooperation",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTl47U8lAdlXW5iIfy9gzuhV8wwM6prkX8iFQ&usqp=CAU",
-      },
+      { title: "solo", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
+      { title: "mono", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
+      { title: "flow", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+      { title: "zoko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+      { title: "keiko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+    ],
+    Faculties: [
+      "Faculty of Engineering",
+      "Faculty of Sciences",
+      "Faculty of Management",
+      "Faculty of Social Sciences",
     ],
   }),
 };

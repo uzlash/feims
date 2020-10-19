@@ -40,6 +40,24 @@ const routes = [
       showHeader: true,
     },
   },
+  {
+    path: "/signin",
+    name: "Signin",
+    component: () =>
+      import(/* webpackChunkName: "Equipment" */ "../views/Signin.vue"),
+    meta: {
+      showHeader: false,
+    },
+  },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: () =>
+      import(/* webpackChunkName: "Equipment" */ "../views/Signup.vue"),
+    meta: {
+      showHeader: false,
+    },
+  },
   
 
   {

@@ -101,10 +101,10 @@
           <v-card-title primary-title> Notifications </v-card-title>
 
           <v-list>
-            <v-list-tile-subtitle class="ml-3">Earlier</v-list-tile-subtitle>
+            <v-list-item-subtitle class="ml-3">Earlier</v-list-item-subtitle>
             <v-list-item v-for="message in messages" :key="message.title" to="">
               <v-avatar>
-                <img src="../assets/b-9.jpeg" alt="alt" class="mr-2" />
+                <img :src="message.image" alt="alt" class="mr-2" />
               </v-avatar>
 
               <v-list-item-content>
@@ -142,11 +142,11 @@ export default {
       { icon: "mdi-cog", text: "Settings", route: "setting" },
     ],
     messages: [
-      { title: "keiko", tile: "keico cooperation" },
-      { title: "keiko", tile: "keico cooperation" },
-      { title: "keiko", tile: "keico cooperation" },
-      { title: "keiko", tile: "keico cooperation" },
-      { title: "keiko", tile: "keico cooperation" },
+      { title: "solo", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
+      { title: "mono", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
+      { title: "flow", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+      { title: "zoko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+      { title: "keiko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
     ],
     Faculties: [
       "Faculty of Engineering",

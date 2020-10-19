@@ -1,111 +1,73 @@
 <template>
-  <v-container class="">
-    <v-row>
-      <v-col cols="12" md6 xs12>
-        <v-card class="ma-5 text-center my-12" elevation-10>
-          <v-card-title> </v-card-title>
-          <v-avatar class="mb-4" size="300" circle elevation-12>
-            <img src="https://i.imgur.com/HBOQXZp.png" alt="" />
-          </v-avatar>
-          <h2 class="display-1">keiko</h2>
-         
-          <h3 class="text-h5 font-weight-light">
-            <v-icon>mdi-domain</v-icon> keiko Nigeria
-          </h3>
-          <h4 class="text-h5 font-weight-light">
-            <v-icon>mdi-email</v-icon> keikong@yahoo.com
-          </h4>
-          
-          <br />
-          <v-divider class=""></v-divider>
-          
-          
-              <v-card flat>
-                <v-list v-for="item in History" :key="item.id">
-                  <v-list-item>
-                    <v-list-item-avatar
-                      
-                      size="100"
-                      
-                    >
-                     <img src="../assets/building-2.jpeg" alt="">
-                    </v-list-item-avatar>
-
-                    <v-list-item-title class="font-weight-light">{{
-                      item.title1
-                    }}</v-list-item-title>
-                  </v-list-item>
-                  <v-divider inset></v-divider>
-                </v-list>
-              </v-card>
-            
-            
-
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-app class="custom__style">
+    <v-container>
+      <v-row>
+        <v-col cols="9" md8>
+          <v-col cols="9">
+            <v-card class="overflow-hidden">
+              <v-toolbar flat color="light-blue">
+                <v-icon left color="white">mdi-account</v-icon>
+                <v-toolbar-title class="white--text">
+                  User Profile
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text>
+                <span>Name</span>
+                <v-text-field
+                  color="light-blue"
+                  label="Name"
+                  solo
+                  prepend-inner-icon="mdi-pen"
+                ></v-text-field>
+              </v-card-text>
+              <v-card-text>
+                <span>Email</span>
+                <v-text-field
+                  color="light-blue"
+                  label="Email"
+                  solo
+                  prepend-inner-icon="mdi-email"
+                ></v-text-field>
+              </v-card-text>
+              <v-card-text>
+                <span>Address</span>
+                <v-text-field
+                  color="light-blue"
+                  label="Address"
+                  solo
+                  prepend-inner-icon="mdi-home"
+                ></v-text-field>
+              </v-card-text>
+              <v-divider></v-divider>
+            </v-card>
+          </v-col>
+        </v-col>
+        <v-col cols="3">
+          <v-card height="300">
+            <v-card class="text-center mt-5" flat>
+              <v-avatar size="100" color="">
+                <img src="../assets/avatar-1.jpg" alt="alt" />
+              </v-avatar>
+              <h3 class="">keiko</h3>
+              <h6>keiko ng</h6>
+            </v-card>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app>
 </template>
 <script>
 export default {
   name: "profile",
   data() {
-    return {
-      dialog: false,
-      tab: null,
-      text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      History: [
-        {
-          id: 1,
-          color: "blue",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 2,
-          color: "orange",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 3,
-          color: "blue",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 4,
-          color: "red",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 5,
-          color: "teal",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 6,
-          color: "green",
-          icon: "../assets/logo.svg",
-          title1: "keiko building",
-        },
-        {
-          id: 7,
-          color: "pink",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-        {
-          id: 8,
-          color: "blue",
-          icon: "mdi-file-document",
-          title1: "keiko building",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>
+<style scoped>
+.custom__style {
+  background-color: #fafafa;
+}
+</style>

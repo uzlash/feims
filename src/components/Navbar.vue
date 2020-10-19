@@ -22,7 +22,7 @@
                 :items="sites"
                 solo
                 filled
-                label="Site"
+                label="Select Site"
               ></v-select>
             </v-col>
             <v-col cols="10">
@@ -32,7 +32,7 @@
                 :items="sections"
                 solo
                 filled
-                label="Faculty/Section"
+                label="Select Faculty/Section"
               ></v-select>
             </v-col>
             <v-col cols="10">
@@ -42,7 +42,7 @@
                 :items="departments"
                 solo
                 filled
-                label="Department"
+                label="Select Department"
               ></v-select>
             </v-col>
           </v-row>

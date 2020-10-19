@@ -18,12 +18,12 @@ export default {
           href: 'breadcrumbs_dashboard',
         },
         {
-          text: 'Link 1',
+          text: 'Section',
           disabled: false,
           href: 'breadcrumbs_link_1',
         },
         {
-          text: 'Link 2',
+          text: 'Department',
           disabled: false,
           href: 'breadcrumbs_link_2',
         },

@@ -7,9 +7,22 @@
           <v-card>
             <v-img :src="building.image" height="200px"></v-img>
             <v-card-title v-text="building.code"></v-card-title>
-            <v-card-subtitle class="pb-1" v-text="building.name"></v-card-subtitle>
-            <v-card-subtitle class="py-1" v-text="building.condition"></v-card-subtitle>
-            <v-card-subtitle class="py-1" v-text="building.cost"></v-card-subtitle>
+            <v-card-subtitle
+              class="pb-1"
+              v-text="building.name"
+            ></v-card-subtitle>
+            <v-card-subtitle
+              :class="
+                building.condition === 'Good Condition'
+                  ? 'green--text py-1'
+                  : 'red--text py-1'
+              "
+              v-text="building.condition"
+            ></v-card-subtitle>
+            <v-card-subtitle
+              class="py-1 green--text"
+              v-text="'N ' + building.cost"
+            ></v-card-subtitle>
             <v-card-actions>
               <v-btn color="light-blue" class="text-capitalize" outlined>
                 More Details

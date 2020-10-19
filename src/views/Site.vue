@@ -6,7 +6,7 @@
         <v-col cols="3" v-for="(building, index) in buildings" :key="index">
           <v-card>
             <v-img :src="building.image" height="200px"></v-img>
-            <v-card-title v-text="building.code"></v-card-title>
+            <v-card-title v-text="building.code" class="body-1"></v-card-title>
             <v-card-subtitle
               class="pb-1"
               v-text="building.name"
@@ -24,7 +24,7 @@
               v-text="'N ' + building.cost"
             ></v-card-subtitle>
             <v-card-actions>
-              <v-btn color="light-blue" class="text-capitalize" outlined>
+              <v-btn @click="goToBuilding()" color="light-blue" class="text-capitalize" outlined>
                 More Details
               </v-btn>
             </v-card-actions>
@@ -106,6 +106,10 @@ export default {
     ],
   }),
   computed: {},
-  methods: {},
+  methods: {
+    goToBuilding() {
+      this.$router.push('kasu1/building/llh1')
+    }
+  },
 };
 </script>

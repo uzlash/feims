@@ -14,7 +14,7 @@ const routes = [
     },
   },
   {
-    path: "/site",
+    path: "/site/:id",
     name: "Site",
     component: () =>
       import(/* webpackChunkName: "SiteView" */ "../views/SiteView.vue"),
@@ -37,18 +37,26 @@ const routes = [
         meta: {
           showHeader: true,
         },
-      }
+      },
+      {
+        path: "building/:id/equipment",
+        component: () =>
+          import(/* webpackChunkName: "Building" */ "../views/Equipment.vue"),
+        meta: {
+          showHeader: true,
+        },
+      },
     ],
   },
-  {
-    path: "/building",
-    name: "Building",
-    component: () =>
-      import(/* webpackChunkName: "Building" */ "../views/Building.vue"),
-    meta: {
-      showHeader: true,
-    },
-  },
+  // {
+  //   path: "/building",
+  //   name: "Building",
+  //   component: () =>
+  //     import(/* webpackChunkName: "Building" */ "../views/Building.vue"),
+  //   meta: {
+  //     showHeader: true,
+  //   },
+  // },
 
   {
     path: "/equipment",
@@ -59,7 +67,6 @@ const routes = [
       showHeader: true,
     },
   },
-  
 
   {
     path: "/report",

@@ -96,7 +96,7 @@
                 </span>
               </div>
               <v-divider></v-divider>
-              <v-btn block dark color="light-blue" class="mt-4"
+              <v-btn @click="goToEquipment()" block dark color="light-blue" class="mt-4"
                 >View Breakdown</v-btn
               >
             </v-col>
@@ -110,5 +110,10 @@
 <script>
 export default {
   components: {},
+  methods: {
+    goToEquipment() {
+      this.$router.push('llh1/equipment')
+    }
+  }
 };
 </script>

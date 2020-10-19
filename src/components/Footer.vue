@@ -13,17 +13,17 @@ export default {
     data: () => ({
             items: [
         {
-          text: 'Sites',
+          text: 'Kasu1',
           disabled: false,
           href: 'breadcrumbs_dashboard',
         },
         {
-          text: 'Section',
+          text: 'LLH1',
           disabled: false,
           href: 'breadcrumbs_link_1',
         },
         {
-          text: 'Department',
+          text: 'Equipment',
           disabled: false,
           href: 'breadcrumbs_link_2',
         },

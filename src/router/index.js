@@ -16,10 +16,29 @@ const routes = [
   {
     path: "/site",
     name: "Site",
-    component: () => import(/* webpackChunkName: "Site" */ "../views/Site.vue"),
+    component: () =>
+      import(/* webpackChunkName: "SiteView" */ "../views/SiteView.vue"),
     meta: {
       showHeader: true,
     },
+    children: [
+      {
+        path: "",
+        component: () =>
+          import(/* webpackChunkName: "Site" */ "../views/Site.vue"),
+        meta: {
+          showHeader: true,
+        },
+      },
+      {
+        path: "building/:id",
+        component: () =>
+          import(/* webpackChunkName: "Building" */ "../views/Building.vue"),
+        meta: {
+          showHeader: true,
+        },
+      }
+    ],
   },
   {
     path: "/building",

@@ -9,7 +9,7 @@
         </h1>
         <v-row>
           <v-col cols="12">
-            <v-card>
+            <v-card tile outlined>
               <v-row dense no-gutters>
                 <v-col cols="8">
                   <v-card-title class="text-h2"> Keiko Corp </v-card-title>
@@ -38,7 +38,7 @@
         </v-row>
         <v-row>
           <v-col cols="12" md="3" v-for="item in Statistics" :key="item.title">
-            <v-card class="pa-4 d-flex flex-column align-center">
+            <v-card class="pa-4 d-flex flex-column align-center" tile outlined>
               <v-btn class="mx-2" fab small depressed dark color="light-blue">
                 <v-icon dark>{{ item.icon }}</v-icon>
               </v-btn>
@@ -49,7 +49,7 @@
         </v-row>
         <v-row>
           <v-col cols="6">
-            <v-card height="400" class="custom__card--scrollable">
+            <v-card height="400" class="custom__card--scrollable" tile outlined>
               <v-card-title class="font-weight-light"
                 >Top Priority Repairs</v-card-title
               >
@@ -84,7 +84,7 @@
             </v-card>
           </v-col>
           <v-col cols="6">
-            <v-card height="400" class="custom__card--scrollable">
+            <v-card height="400" class="custom__card--scrollable" tile outlined>
               <v-card-title class="font-weight-light"
                 >Updates History</v-card-title
               >
@@ -121,7 +121,7 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <v-card>
+            <v-card tile outlined>
               <v-card-title class="font-weight-light"
                 >Repairs Summary</v-card-title
               >

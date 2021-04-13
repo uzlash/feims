@@ -11,6 +11,7 @@ const routes = [
     component: Home,
     meta: {
       showHeader: true,
+      breadcrumb: 'Home'
     },
   },
   {
@@ -34,7 +35,7 @@ const routes = [
         path: "building/:id",
         component: () =>
           import(/* webpackChunkName: "Building" */ "../views/Building.vue"),
-        meta: {
+          meta: {
           showHeader: true,
         },
       },
@@ -48,16 +49,6 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: "/building",
-  //   name: "Building",
-  //   component: () =>
-  //     import(/* webpackChunkName: "Building" */ "../views/Building.vue"),
-  //   meta: {
-  //     showHeader: true,
-  //   },
-  // },
-
   {
     path: "/equipment",
     name: "Equipment",
@@ -67,7 +58,6 @@ const routes = [
       showHeader: true,
     },
   },
-
   {
     path: "/report",
     name: "Report",
@@ -95,6 +85,20 @@ const routes = [
       showHeader: true,
     },
   },
+  {
+    path: "/signin",
+    component: () => import(/* webpackChunkName: "Profile" */ "../views/Signin.vue"),
+    meta: {
+      showHeader: false,
+    },
+  },
+  {
+    path: "/signup",
+    component: () => import(/* webpackChunkName: "Profile" */ "../views/Signup.vue"),
+    meta: {
+      showHeader: false,
+    },
+  }
 ];
 
 const router = new VueRouter({

@@ -1,9 +1,10 @@
 <template>
     <v-footer padless app inset>
         <v-card class="flex" flat tile color="" elevation="10">
-            <!-- <v-card-text class="py-2 white--text text-center"> -->
-                      <v-breadcrumbs :items="items" large class="pa-2 red--text"></v-breadcrumbs>
-            <!-- </v-card-text> -->
+            <v-card-text class="py-2 white--text text-center">
+              <v-breadcrumbs :items="items" large class="pa-2 red--text"></v-breadcrumbs>
+              <!-- <Breadcrumbs/> -->
+            </v-card-text>
         </v-card>
     </v-footer>
 </template>
@@ -15,17 +16,17 @@ export default {
         {
           text: 'Kasu1',
           disabled: false,
-          href: 'breadcrumbs_dashboard',
+          to: '/site/kasu1',
         },
         {
           text: 'LLH1',
           disabled: false,
-          href: 'breadcrumbs_link_1',
+          to: '/building/llh1',
         },
         {
           text: 'Equipment',
           disabled: false,
-          href: 'breadcrumbs_link_2',
+          to: 'breadcrumbs_link_2',
         },
       ]
     })

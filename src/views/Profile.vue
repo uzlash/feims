@@ -44,15 +44,22 @@
           </v-col>
         </v-col>
         <v-col cols="3">
-          <v-card height="300">
-            <v-card class="text-center mt-5" flat>
-              <v-avatar size="100" color="">
-                <img src="../assets/avatar-1.jpg" alt="alt" />
-              </v-avatar>
-              <h3 class="">keiko</h3>
-              <h6>keiko ng</h6>
+          <v-card
+              tile
+              height="360"
+              class=" d-flex flex-column align-center justify-center"
+            >
+              <div>
+                <v-avatar size="120" color="grey">
+                  <v-img src="../assets/avatar-1.jpg"></v-img>
+                </v-avatar>
+              </div>
+
+              <v-card-text class="text-h5 pa-0 text-center font-weight-light mt-2"
+                >keiko</v-card-text
+              >
+             
             </v-card>
-          </v-card>
         </v-col>
       </v-row>
     </v-container>

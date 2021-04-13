@@ -4,13 +4,15 @@
       <span class="text-h5 font-weight-light">Buildings</span>
       <v-row>
         <v-col cols="3" v-for="(building, index) in buildings" :key="index">
-          <v-card>
+          <v-card outlined>
             <v-img :src="building.image" height="200px"></v-img>
             <v-card-title v-text="building.code" class="body-1"></v-card-title>
+            
             <v-card-subtitle
               class="pb-1"
               v-text="building.name"
             ></v-card-subtitle>
+            <v-divider></v-divider>
             <v-card-subtitle
               :class="
                 building.condition === 'Good Condition'

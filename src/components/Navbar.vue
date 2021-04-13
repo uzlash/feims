@@ -4,7 +4,7 @@
       app
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
-      width="256"
+      width="350"
     >
       <v-list dense>
         <v-list-item color="light-blue" link to="/">
@@ -23,6 +23,8 @@
                 solo
                 filled
                 label="Select Site"
+                v-model="selectedSite"
+                @change="hideSection()"
               ></v-select>
             </v-col>
             <v-col cols="10">
@@ -33,6 +35,9 @@
                 solo
                 filled
                 label="Select Faculty/Section"
+                v-model="selectedSection"
+                v-if="selectedSite"
+                @change="hideDepartment()"
               ></v-select>
             </v-col>
             <v-col cols="10">
@@ -43,6 +48,9 @@
                 solo
                 filled
                 label="Select Department"
+                v-model="selectedDepartment"
+                v-if="selectedSite && selectedSection"
+                @change="goToBuildings()"
               ></v-select>
             </v-col>
           </v-row>
@@ -132,28 +140,84 @@ export default {
   data: () => ({
     dialog: false,
     drawer: null,
-    sites: ["ABU", "ATBU", "BUK"],
-    sections: ["FE", "FM", "FS"],
-    departments: ["DOM", "DOB", "DOP"],
+    selectedSite: '',
+    selectedSection: '',
+    selectedDepartment: '',
+    sites: [
+      'Ahmadu Bello University',
+      'Abubakar Tafawa Bello University',
+      'Bayero University Kano',
+    ],
+    sections: [
+      'Faculty of Education',
+      'Faculty of Social Sciences',
+      'Faculty of Sciences',
+    ],
+    departments: [
+      'Department Of Mathematics',
+      'Department Of Biochemistry',
+      'Department Of Physics',
+    ],
     items: [
-      { icon: "mdi-home", text: "Home", route: "/" },
-      { icon: "mdi-office-building", text: "Sites", route: "/site" },
-      { icon: "mdi-chart-bar", text: "Reports", route: "report" },
-      { icon: "mdi-cog", text: "Settings", route: "setting" },
+      { icon: 'mdi-home', text: 'Home', route: '/' },
+      { icon: 'mdi-office-building', text: 'Sites', route: '/site' },
+      { icon: 'mdi-chart-bar', text: 'Reports', route: 'report' },
+      { icon: 'mdi-cog', text: 'Settings', route: 'setting' },
     ],
     messages: [
-      { title: "solo", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
-      { title: "mono", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU' },
-      { title: "flow", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
-      { title: "zoko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
-      { title: "keiko", tile: "keico cooperation", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU'},
+      {
+        title: 'solo',
+        tile: 'keico cooperation',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU',
+      },
+      {
+        title: 'mono',
+        tile: 'keico cooperation',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU',
+      },
+      {
+        title: 'flow',
+        tile: 'keico cooperation',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU',
+      },
+      {
+        title: 'zoko',
+        tile: 'keico cooperation',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU',
+      },
+      {
+        title: 'keiko',
+        tile: 'keico cooperation',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-Os2IiumkKKDJbU7BRdgBJOZLl_SswxJorQ&usqp=CAU',
+      },
     ],
     Faculties: [
-      "Faculty of Engineering",
-      "Faculty of Sciences",
-      "Faculty of Management",
-      "Faculty of Social Sciences",
+      'Faculty of Engineering',
+      'Faculty of Sciences',
+      'Faculty of Management',
+      'Faculty of Social Sciences',
     ],
   }),
-};
+  methods: {
+    // When the selected box changes, remove the element from the DOM
+    hideSection() {
+      this.selectedSection = ''
+      this.selectedDepartment = ''
+    },
+    hideDepartment() {
+      this.selectedDepartment = ''
+    },
+    goToBuildings() {
+      if (this.selectedDepartment) {
+        this.$router.push('/site/kasu1')
+        console.log('pushed')
+      }
+    },
+  },
+}
 </script>
